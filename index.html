@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07070b">
+<meta name="description" content="VIRALBOX — tests, generadores y experiencias virales para descubrir cosas absurdamente precisas sobre ti.">
+<title>VIRALBOX — Discover your chaos</title>
+<style>
+:root{--bg:#07070b;--surface:#0d0d14;--surface2:#12121b;--surface3:#181824;--line:#262637;--text:#f7f7fb;--muted:#9a9aab;--purple:#8b5cf6;--pink:#ec4899;--cyan:#22d3ee;--green:#34d399;--yellow:#fbbf24;--red:#fb7185;--shadow:0 24px 70px rgba(0,0,0,.38)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:
+radial-gradient(900px 500px at 10% -5%,rgba(139,92,246,.20),transparent 60%),
+radial-gradient(800px 450px at 100% 5%,rgba(236,72,153,.15),transparent 60%),
+var(--bg);min-height:100vh}button,input{font:inherit}button{cursor:pointer}
+.container{width:min(1160px,calc(100% - 32px));margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:50;background:rgba(7,7,11,.74);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.05)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:.14em;font-size:14px}.logo-dot{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 8px 24px rgba(139,92,246,.32);position:relative}.logo-dot:after{content:"";width:8px;height:8px;border-radius:50%;background:white;position:absolute;left:10px;top:10px;box-shadow:0 0 16px white}
+.nav-right{display:flex;gap:9px;align-items:center}.pill{border:1px solid var(--line);background:rgba(255,255,255,.03);padding:9px 13px;border-radius:999px;color:#d8d8e4;font-size:13px;font-weight:800}.pill:hover{border-color:#46465f;background:rgba(255,255,255,.06)}
+.hero{padding:84px 0 34px;text-align:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid #342950;background:#151022;border-radius:999px;color:#d7c7ff;font-weight:800;font-size:12px;letter-spacing:.05em}.eyebrow b{color:#f8d86a}.hero h1{font-size:clamp(60px,11vw,126px);line-height:.84;letter-spacing:-.075em;margin:22px 0 22px;background:linear-gradient(90deg,#fff 0%,#ddd6fe 35%,#f9a8d4 74%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:690px;margin:0 auto;color:var(--muted);font-size:18px;line-height:1.6}.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}.btn{border:1px solid var(--line);background:#12121b;color:white;border-radius:13px;padding:12px 16px;font-weight:900;transition:.18s}.btn:hover{transform:translateY(-2px);border-color:#4c4c66}.btn.primary{border:0;background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 14px 34px rgba(139,92,246,.22)}.btn.ghost{background:transparent}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:48px 0 18px}.section-head h2{font-size:23px;letter-spacing:-.03em;margin:0}.section-head p{margin:5px 0 0;color:var(--muted);font-size:14px}.count{color:#bbbccc;font-size:13px;font-weight:800}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 20px}.search{flex:1;min-width:240px;position:relative}.search input{width:100%;padding:14px 16px 14px 44px;border-radius:13px;border:1px solid var(--line);background:#0f0f17;color:white;outline:none}.search input:focus{border-color:#5a4a7c;box-shadow:0 0 0 4px rgba(139,92,246,.10)}.search span{position:absolute;left:15px;top:12px;color:#77778a}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{padding:10px 13px;border-radius:999px;border:1px solid var(--line);background:#0f0f17;color:#bdbdcc;font-size:13px;font-weight:800}.filter.active,.filter:hover{background:#1a1429;border-color:#4e3c70;color:white}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:70px}.card{position:relative;overflow:hidden;min-height:250px;padding:22px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(155deg,rgba(255,255,255,.045),rgba(255,255,255,.015));box-shadow:0 12px 40px rgba(0,0,0,.18);transition:transform .2s,border-color .2s,box-shadow .2s}.card:hover{transform:translateY(-5px);border-color:#45455f;box-shadow:0 20px 60px rgba(0,0,0,.33)}.glow{position:absolute;width:150px;height:150px;border-radius:50%;filter:blur(35px);opacity:.16;right:-35px;top:-35px}.card-top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}.card-icon{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:23px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07)}.tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:#b8b8c8}.card h3{font-size:21px;margin:18px 0 8px;position:relative;z-index:1}.card p{color:var(--muted);font-size:14px;line-height:1.55;margin:0;position:relative;z-index:1;max-width:310px}.card-bottom{position:absolute;left:22px;right:22px;bottom:20px;display:flex;align-items:center;justify-content:space-between}.play{font-size:13px;font-weight:950;color:#dcd7ff}.meter{font-size:11px;color:#747487}.empty{grid-column:1/-1;padding:50px 20px;text-align:center;border:1px dashed var(--line);border-radius:20px;color:var(--muted)}
+.footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0 44px;color:#666679;font-size:13px;text-align:center}
+.app{display:none}.appbar{height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:34px}.appbar .title{font-weight:950;letter-spacing:.08em;font-size:13px}.close{padding:10px 13px;border:1px solid var(--line);background:#101018;color:#ddd;border-radius:11px;font-weight:900}
+.workspace{max-width:780px;margin:0 auto 70px}.mini-meta{display:flex;align-items:center;gap:8px;color:#8f8f9f;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.mini-icon{width:52px;height:52px;border-radius:17px;background:linear-gradient(135deg,rgba(139,92,246,.20),rgba(236,72,153,.16));display:grid;place-items:center;font-size:26px;border:1px solid #3a3153}.work-title{font-size:clamp(38px,6vw,64px);line-height:.95;letter-spacing:-.055em;margin:18px 0 10px}.work-sub{color:var(--muted);font-size:16px;line-height:1.6;margin:0;max-width:640px}.panel{margin-top:28px;padding:26px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(160deg,#11111a,#0b0b11);box-shadow:var(--shadow)}.progress{height:8px;background:#21212d;border-radius:999px;overflow:hidden;margin-bottom:25px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--pink));border-radius:999px;transition:width .25s}.question-number{font-size:12px;color:#7e7e91;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.question{font-size:27px;line-height:1.2;letter-spacing:-.035em;margin:10px 0 20px}.answers{display:grid;gap:10px}.answer{width:100%;padding:16px;text-align:left;border-radius:14px;border:1px solid #2c2c3b;background:#15151e;color:#f3f3f7;font-weight:800;transition:.18s}.answer:hover{background:#1a1724;border-color:#53426e;transform:translateX(3px)}.answer.selected{border-color:#8661d3;background:#211a30}.hint{color:#78788b;font-size:12px;margin-top:15px}.form-label{display:block;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;color:#8c8c9e;margin-bottom:8px}.field{width:100%;padding:14px 15px;border-radius:13px;border:1px solid var(--line);background:#14141d;color:white;outline:none;margin-bottom:14px;resize:vertical}.field:focus{border-color:#5b487a;box-shadow:0 0 0 4px rgba(139,92,246,.10)}
+.result-head{display:flex;align-items:center;gap:14px}.result-badge{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-size:28px;background:linear-gradient(135deg,rgba(139,92,246,.24),rgba(236,72,153,.18));border:1px solid #45395f}.result-kicker{color:#8f8fa0;text-transform:uppercase;letter-spacing:.1em;font-size:11px;font-weight:950}.result-title{font-size:35px;line-height:1;margin:4px 0 0;letter-spacing:-.04em}.result-copy{color:#c7c7d2;line-height:1.7;font-size:15px;margin:19px 0 22px}.stats{display:grid;gap:13px}.stat-head{display:flex;justify-content:space-between;color:#b4b4c2;font-size:12px;font-weight:900;margin-bottom:7px}.stat-bar{height:9px;border-radius:999px;background:#22222e;overflow:hidden}.stat-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--pink));width:0;animation:grow .8s ease forwards}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.chip{padding:8px 10px;border:1px solid #313142;background:#15151f;border-radius:999px;color:#c8c8d4;font-size:12px;font-weight:800}.result-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.share-note{font-size:11px;color:#6f6f80;margin-top:10px}
+.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.choice{padding:14px;border:1px solid var(--line);border-radius:14px;background:#12121a;color:#ddd;font-weight:800;text-align:left}.choice:hover,.choice.active{border-color:#675184;background:#1b1627}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.output{margin-top:18px;padding:20px;border-radius:18px;border:1px solid #303041;background:#11111a}.big-number{font-size:48px;font-weight:950;letter-spacing:-.06em}.mono{font-variant-numeric:tabular-nums}
+@keyframes grow{from{width:0}to{width:var(--w)}}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.animate{animation:fade .35s ease}.hidden{display:none!important}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.container{width:min(100% - 20px,1160px)}.nav{height:66px}.hero{padding-top:62px}.hero h1{letter-spacing:-.055em}.grid{grid-template-columns:1fr}.section-head{margin-top:35px}.card{min-height:225px}.panel{padding:20px}.work-title{font-size:42px}.question{font-size:23px}.two-col,.choice-grid{grid-template-columns:1fr}.nav-right .pill{display:none}}
+</style>
+</head>
+<body>
+<div id="homeView">
+  <div class="container nav"><div class="logo"><span class="logo-dot"></span>VIRALBOX</div><div class="nav-right"><span class="pill">10 EXPERIENCIAS</span><button class="pill" id="suggestBtn">💡 Sugerencias</button><button class="pill" id="contactBtn">✉️ Contacto</button><button class="pill" id="randomBtn">🎲 Sorpresa</button></div></div>
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">🔥 <b>VIRAL</b> · Hecho para compartir resultados</div>
+      <h1>DISCOVER<br>YOUR CHAOS.</h1>
+      <p>Tests, generadores y experimentos diseñados para que entres por curiosidad y acabes diciendo: “vale, esto me conoce demasiado”.</p>
+      <div class="hero-actions"><button class="btn primary" id="heroRandom">Quiero mi resultado →</button><button class="btn ghost" onclick="document.getElementById('experiences').scrollIntoView({behavior:'smooth'})">Ver experiencias</button></div>
+    </section>
+    <div class="section-head"><div><h2 id="experiences">Todas las experiencias</h2><p>Elige una. No respondemos por las consecuencias.</p></div><div class="count" id="countLabel"></div></div>
+    <div class="toolbar"><div class="search"><span>⌕</span><input id="search" placeholder="Buscar: anime, roast, GTA, banda…" autocomplete="off"></div><div class="filters" id="filters"></div></div>
+    <section class="grid" id="cards"></section>
+
+    <section id="community" style="padding:12px 0 20px">
+      <div class="two-col">
+        <article class="panel" style="margin-top:0">
+          <div class="mini-meta">💡 FEEDBACK</div>
+          <h2 style="font-size:32px;letter-spacing:-.04em;margin:12px 0 8px">¿Tienes una idea?</h2>
+          <p class="work-sub">Dime qué test, juego o apartado quieres ver en VIRALBOX. Puedes enviarme la sugerencia directamente por correo.</p>
+          <div style="margin-top:18px"><label class="form-label">Tu sugerencia</label><textarea id="suggestionText" class="field" rows="5" maxlength="1000" placeholder="Ej.: un test de qué villano de GTA eres..."></textarea><button class="btn primary" id="sendSuggestion">Enviar sugerencia →</button></div>
+        </article>
+        <article class="panel" style="margin-top:0">
+          <div class="mini-meta">✉️ CONTACTO</div>
+          <h2 style="font-size:32px;letter-spacing:-.04em;margin:12px 0 8px">Habla conmigo</h2>
+          <p class="work-sub">Para propuestas, errores, ideas o cualquier cosa relacionada con VIRALBOX.</p>
+          <div class="output" style="margin-top:18px"><div class="form-label">Correo</div><a href="mailto:coldeatz@gmail.com" style="color:#ddd6fe;font-weight:900;text-decoration:none">coldeatz@gmail.com</a><div class="form-label" style="margin-top:18px">Apóyame</div><a href="https://ko-fi.com/coldetz" target="_blank" rel="noopener" style="color:#f9a8d4;font-weight:900;text-decoration:none">☕ ko-fi.com/coldetz</a></div>
+          <div class="hero-actions" style="justify-content:flex-start;margin-top:16px"><a class="btn primary" href="mailto:coldeatz@gmail.com?subject=VIRALBOX%20-%20Contacto">Enviar correo</a><a class="btn" href="https://ko-fi.com/coldetz" target="_blank" rel="noopener">Apoyar en Ko-fi</a></div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">VIRALBOX · 100% client-side · Sin cuentas · Sin backend · Diseñado para GitHub Pages · <a href="mailto:coldeatz@gmail.com" style="color:#aaa;text-decoration:none">Contacto</a></footer>
+  </main>
+</div>
+
+<div id="appView" class="app">
+  <div class="container"><div class="appbar"><div class="title">VIRALBOX / EXPERIENCE</div><button class="close" id="backBtn">← Volver</button></div><main id="workspace" class="workspace"></main></div>
+</div>
+
+<script>
+const experiences=[
+{id:'npc',icon:'🤖',title:'¿Qué tan NPC eres?',tag:'Test',cat:'Tests',desc:'Descubre si eres protagonista, NPC legendario o un bug con piernas.',accent:'#8b5cf6'},
+{id:'villano',icon:'🩸',title:'Tu nombre como villano',tag:'Generador',cat:'Generadores',desc:'Tu nombre convertido en identidad de villano, poder, rango y debilidad.',accent:'#fb7185'},
+{id:'personaje',icon:'🎭',title:'¿Qué personaje eres?',tag:'Test',cat:'Tests',desc:'Descubre tu arquetipo según cómo reaccionas cuando todo se complica.',accent:'#22d3ee'},
+{id:'excusas',icon:'💀',title:'Generador de excusas',tag:'Generador',cat:'Generadores',desc:'Excusas útiles, sospechosas y peligrosamente convincentes.',accent:'#fbbf24'},
+{id:'supervivirias',icon:'☠️',title:'¿Sobrevivirías?',tag:'Simulador',cat:'Experimentos',desc:'Zombies, apagones, refugios y decisiones que probablemente no tomarías.',accent:'#34d399'},
+{id:'gta',icon:'🚗',title:'Tu vida en GTA',tag:'Stats',cat:'Experimentos',desc:'Dinero, coche, propiedades y nivel de búsqueda. Todo en tu ficha criminal.',accent:'#f97316'},
+{id:'banda',icon:'🎸',title:'Generador de bandas',tag:'Creativo',cat:'Generadores',desc:'Crea nombre, género, estética y primer concierto de tu futura banda.',accent:'#a78bfa'},
+{id:'roast',icon:'🔥',title:'Roast automático',tag:'Roast',cat:'Experimentos',desc:'Un roast generado al vuelo. Puede doler. No garantizamos madurez.',accent:'#ef4444'},
+{id:'grupo',icon:'👀',title:'¿Quién es el más…?',tag:'Grupo',cat:'Experimentos',desc:'Mete los nombres de tu grupo y deja que el caos reparta los papeles.',accent:'#f472b6'},
+{id:'anime',icon:'⚔️',title:'Tu personaje de anime',tag:'RPG',cat:'Experimentos',desc:'Poder, rango, arma, transformación y enemigo final en una sola ficha.',accent:'#60a5fa'}
+];
+const categories=['Todos','Tests','Generadores','Experimentos']; let activeCat='Todos';
+const $=s=>document.querySelector(s); const $$=s=>[...document.querySelectorAll(s)];
+const cards=$('#cards'),search=$('#search'),filters=$('#filters'),countLabel=$('#countLabel');
+filters.innerHTML=categories.map(c=>`<button class="filter ${c==='Todos'?'active':''}" data-cat="${c}">${c}</button>`).join('');
+function renderCards(){const q=search.value.trim().toLowerCase();const list=experiences.filter(x=>(activeCat==='Todos'||x.cat===activeCat)&&(!q||(x.title+' '+x.desc+' '+x.tag+' '+x.cat).toLowerCase().includes(q)));countLabel.textContent=`${list.length} ${list.length===1?'resultado':'resultados'}`;cards.innerHTML=list.length?list.map(x=>`<article class="card" data-id="${x.id}" role="button" tabindex="0"><span class="glow" style="background:${x.accent}"></span><div class="card-top"><div class="card-icon">${x.icon}</div><div class="tag">${x.tag}</div></div><h3>${x.title}</h3><p>${x.desc}</p><div class="card-bottom"><span class="play">Abrir experiencia →</span><span class="meter">01 / 10</span></div></article>`).join(''):`<div class="empty">No hay experiencias que coincidan.<br><button class="btn" style="margin-top:12px" onclick="resetFilters()">Limpiar búsqueda</button></div>`;$$('.card').forEach(c=>{c.addEventListener('click',()=>openExperience(c.dataset.id));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openExperience(c.dataset.id)})})}
+function resetFilters(){search.value='';activeCat='Todos';$$('.filter').forEach(b=>b.classList.toggle('active',b.dataset.cat==='Todos'));renderCards()}
+filters.addEventListener('click',e=>{const b=e.target.closest('.filter');if(!b)return;activeCat=b.dataset.cat;$$('.filter').forEach(x=>x.classList.toggle('active',x===b));renderCards()});search.addEventListener('input',renderCards);
+$('#randomBtn').onclick=$('#heroRandom').onclick=()=>openExperience(experiences[Math.floor(Math.random()*experiences.length)].id);
+
+const home=$('#homeView'),app=$('#appView'),workspace=$('#workspace');
+function goHome(){location.hash='';app.style.display='none';home.style.display='block';window.scrollTo({top:0,behavior:'smooth'})}
+function openExperience(id){const x=experiences.find(e=>e.id===id);if(!x)return;location.hash=id;home.style.display='none';app.style.display='block';window.scrollTo({top:0,behavior:'smooth'});workspace.innerHTML=`<div class="mini-meta"><span class="mini-icon">${x.icon}</span>${x.tag} · ${x.cat}</div><h1 class="work-title">${x.title}</h1><p class="work-sub">${x.desc}</p><div id="tool" class="panel animate"></div>`;tools[id]($(`#tool`),x)}
+$('#backBtn').onclick=goHome;window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);if(id)openExperience(id);else goHome()});
+
+const tools={};
+function resultShell(tool,icon,title,copy,stats=[],chips=[]){return `<div class="result-head"><div class="result-badge">${icon}</div><div><div class="result-kicker">Resultado final</div><div class="result-title">${title}</div></div></div><p class="result-copy">${copy}</p>${stats.length?`<div class="stats">${stats.map(s=>`<div><div class="stat-head"><span>${s[0]}</span><span class="mono">${s[1]}%</span></div><div class="stat-bar"><i style="--w:${s[1]}%"></i></div></div>`).join('')}</div>`:''}${chips.length?`<div class="chips">${chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div>`:''}<div class="result-actions"><button class="btn primary" data-retry="${tool}">Repetir</button><button class="btn" id="resultHome">Otra experiencia</button></div><div class="share-note">Haz una captura de tu resultado y pásaselo a tu grupo.</div>`}
+function bindRetry(id){const b=document.querySelector('[data-retry]');if(b)b.onclick=()=>openExperience(id);const h=document.getElementById('resultHome');if(h)h.onclick=goHome}
+function mountQuiz(el,id,questions,calcResult){let step=0,score=0;const draw=()=>{if(step>=questions.length){el.innerHTML=calcResult(score,questions.length);bindRetry(id);return}const q=questions[step];el.innerHTML=`<div class="progress"><i style="width:${(step/questions.length)*100}%"></i></div><div class="question-number">Pregunta ${step+1} de ${questions.length}</div><div class="question">${q.q}</div><div class="answers">${q.a.map((a,i)=>`<button class="answer" data-i="${i}">${a}</button>`).join('')}</div><div class="hint">No hay respuesta correcta. Solo consecuencias.</div>`;el.querySelectorAll('.answer').forEach(b=>b.addEventListener('click',()=>{score+=Number(b.dataset.i);step++;draw()}))};draw()}
+const genericPersonality=[
+['Cuando aparece un problema…',['Lo soluciono','Improviso','Me bloqueo','Hago un plan']],
+['Tu mayor virtud',['Lealtad','Creatividad','Valentía','Observación']],
+['Tu peor defecto',['Impulsividad','Sobrepensar','Pereza','Ego']],
+['En un grupo eres…',['El líder','El caos','El estratega','El apoyo']],
+['Cuando alguien te traiciona…',['Lo hablo','Me alejo','Planeo la venganza','Finjo que no me importa']],
+['Tu energía social es…',['Infinita','Depende del día','Cero','Solo con mi gente']],
+['Si encuentras una puerta misteriosa…',['La abro','Busco pistas','No me acerco','La abro y luego pregunto']],
+['Cuando tienes un objetivo…',['Voy directo','Hago un plan','Espero el momento','Me obsesiono']],
+['En una película elegirías…',['Ser héroe','Ser villano','Ser mentor','Ser el personaje impredecible']],
+['¿Qué te define más?',['Corazón','Cabeza','Instinto','Caos']],
+['Cuando nadie te conoce en un sitio nuevo…',['Tomo la iniciativa','Observo primero','Busco a alguien conocido','Hago una broma']],
+['Si ganas mucho dinero de repente…',['Lo ahorro','Lo gasto en algo grande','Invito a mis amigos','Compro algo absurdo']],
+['Tu reacción ante una norma absurda…',['La sigo','La cuestiono','Busco un hueco','La rompo']],
+['En una aventura prefieres…',['Plan perfecto','Descubrir sobre la marcha','Ir acompañado','Que sea lo más raro posible']],
+['Cuando te sale algo muy bien…',['Lo celebro','Pienso en el siguiente objetivo','Lo cuento a mi gente','Me sorprendo']]
+].map(([q,a])=>({q,a}));
+const survival=[
+['Apagón total. Solo tienes una linterna.',['Busco agua y comida','Me quedo quieto','Llamo a todos','Voy de aventura']],
+['Un desconocido ofrece refugio.',['Acepto','Pregunto cosas primero','No confío','Depende del refugio']],
+['Escuchas ruidos fuera.',['Me escondo','Investigo','Bloqueo la puerta','Hago ruido para asustar']],
+['Solo queda una salida.',['Voy','Busco otra','Mando a otro primero','Improviso']],
+['Te quedan 3 botellas de agua.',['Las reparto','Las guardo','Bebo una','No desperdicio ni una gota']],
+['Encuentras un mapa sin marcar.',['Lo estudio','Sigo la ruta','Lo guardo','Lo sigo porque sí']],
+['Un compañero entra en pánico.',['Le calmo','Le doy una tarea','Le ignoro','Entro en pánico con él']],
+['Tienes una hora antes de que anochezca.',['Busco refugio','Busco recursos','Exploro','Descanso']],
+['Ves humo a lo lejos.',['Voy a comprobarlo','Me alejo','Observo desde lejos','Es una trampa segurísimo']],
+['Última decisión: correr o esconderse.',['Correr','Esconderme','Depende','Improvisar']],
+['Un camino parece más corto pero oscuro.',['Lo tomo','Busco otra ruta','Voy con alguien','Me quedo donde estoy']],
+['Solo puedes llevar tres objetos.',['Agua, comida, linterna','Mapa, cuerda, agua','Teléfono, batería, comida','Lo que encuentre primero']],
+['Tu compañero propone separarse.',['Acepto','Me niego','Solo un rato','Depende del lugar']],
+['La radio recibe una señal desconocida.',['Respondo','Escucho','La apago','Intento localizarla']],
+['Tienes una última comida.',['La comparto','La guardo','La reparto','La como y ya veremos']]
+].map(([q,a])=>({q,a}));
+const npc=[
+['Llegas tarde y todo el mundo ya está dentro.',['Entro como si nada','Invento una historia imposible','Me quedo fuera esperando','Entro haciendo más ruido del necesario']],
+['Te encuentras 20 € en el suelo.',['Busco al dueño','Los guardo','Los dejo ahí','Me compro algo y no pienso demasiado']],
+['Tu amigo dice: “Tengo una idea”.',['Me apunto','Pregunto si es legal','Me preocupo inmediatamente','Digo que sí antes de escucharla']],
+['A las 03:00 estás…',['Durmiendo','Jugando','Viendo vídeos','Tomando decisiones cuestionables']],
+['En una discusión tú…',['Intento mediar','Tengo razón, obviamente','Me río','Echo más leña al fuego']],
+['Te llega un mensaje que dice “tenemos que hablar”.',['Pregunto qué pasa','Entro en pánico','No respondo','Me invento una teoría conspirativa']],
+['Entras en una habitación y olvidas a qué ibas.',['Me acuerdo al salir','Me quedo pensando','Vuelvo a entrar','Acepto que era una misión secundaria']],
+['Tu plan perfecto falla a mitad de camino.',['Lo adapto','Improviso','Abandono','Finjo que era parte del plan']],
+['Alguien del grupo no para de discutir.',['Intento mediar','Me aparto','Le contradigo','Le doy la razón para terminar']],
+['Encuentras una mochila abandonada.',['La dejo y busco al dueño','La reviso con cuidado','No la toco','Me la llevo']],
+['Empieza a llover justo al salir.',['Sigo igual','Busco refugio','Corro','Me lo tomo como señal']],
+['Te proponen un plan a última hora.',['Voy de cabeza','Pregunto quién va','Digo que no','Voy pero sin saber nada']],
+['Tu alarma suena y no quieres levantarte.',['Me levanto','Pospongo una vez','La ignoro','Negocio con mi yo de mañana']],
+['Tienes que elegir una puerta.',['La de la izquierda','La de la derecha','La que parece más peligrosa','La que no debería abrirse']],
+['Te dan un día completamente libre.',['Salgo','Juego','Duermo','Hago algo impulsivo']]
+].map(([q,a])=>({q,a}));
+
+tools.npc=(el)=>mountQuiz(el,'npc',npc,(score,n)=>{const r=[['NPC DE FONDO','Tu energía es de personaje secundario, pero tienes más lore del que parece.'],['NPC LEGENDARIO','Tienes frases icónicas, rutinas cuestionables y una misión secundaria permanente.'],['PROTAGONISTA','El universo te está dando demasiado argumento para ser casualidad.'],['BOSS FINAL','No juegas la historia. La historia intenta sobrevivirte.']][Math.min(3,Math.floor(score/(n*3/4)))];return resultShell('npc','🤖',r[0],r[1],[['Aura',Math.min(99,45+score*3)],['Caos',Math.min(99,30+score*5)],['Protagonismo',Math.min(99,20+score*6)],['Suerte',Math.min(99,45+(score%10)*5)]],['Misión secundaria activa','+10 de carisma','No seguir el tutorial','NPC sospechosamente importante'])});
+tools.personaje=(el)=>mountQuiz(el,'personaje',genericPersonality,(score)=>{const r=[['EL RIVAL CARISMÁTICO','Siempre pareces a dos escenas de convertirte en favorito del público.'],['EL CAÓTICO','Tu plan tiene un 4% de sentido y un 100% de entretenimiento.'],['EL ANTIHÉROE','No haces lo correcto. Haces lo necesario.'],['EL ESTRATEGA','Mientras todos discuten, tú ya estás tres pasos por delante.']][Math.min(3,Math.floor(score/8))];return resultShell('personaje','🎭',r[0],r[1],[['Carisma',Math.min(99,60+score*2)],['Instinto',Math.min(99,55+score*3)],['Drama',Math.min(99,40+score*4)],['Plot armor',Math.min(99,70+score*2)]],['Arco de personaje: inevitable','Rival recurrente','Final abierto','Lore sospechosamente extenso'])});
+tools.supervivirias=(el)=>mountQuiz(el,'supervivirias',survival,(score)=>{const p=Math.max(18,94-score*3);return resultShell('supervivirias','☠️',p>75?'SUPERVIVIENTE':p>50?'SOBREVIVES DE MILAGRO':p>30?'MALAS DECISIONES':'EPISODIO FINAL',`Tus decisiones te dejan con una probabilidad estimada del <b>${p}%</b>. No es ciencia. Pero tampoco parece mala señal.`,[['Supervivencia',p],['Sangre fría',Math.min(99,42+score*4)],['Suerte',Math.min(99,40+(score%10)*5)],['Preparación',Math.max(20,82-score*2)]],['Kit improvisado','No entrar en pánico','Plan B: correr','Nunca confiar en una puerta fácil'])});
+
+function inputTool(el,id,prompt,placeholder,build){el.innerHTML=`<div class="form-label">${prompt}</div><input class="field" id="valueInput" placeholder="${placeholder}" maxlength="80"><button class="btn primary" id="generateBtn">Generar resultado →</button><div id="output"></div>`;const input=el.querySelector('#valueInput');el.querySelector('#generateBtn').onclick=()=>{const v=input.value.trim()||'Desconocido';el.querySelector('#output').innerHTML=build(v);bindRetry(id)}}
+function safeName(s){return s.replace(/[&<>"]/g,'')}
+const villains=['DEVORADOR DE SOMBRAS','REY DEL VACÍO','SILENCIO ETERNO','PRÍNCIPE DEL CAOS','SEÑOR DE LA NOCHE'];
+const powers=['Manipulación del tiempo','Control de sombras','Telequinesis','Fuego negro','Control mental','Inmortalidad'];
+const weaknesses=['No puede mentir','Le aterran los gatos','Pierde poder con la música','Tiene demasiada confianza','Necesita dormir 14 horas'];
+
+tools.villano=(el)=>inputTool(el,'villano','Escribe tu nombre','Tu nombre...',v=>{const n=safeName(v);const i=n.length;return resultShell('villano','🩸',`${n.toUpperCase()}, EL ${villains[i%villains.length]}`,`Has sido reclutado para una guerra que nadie más recuerda. Tu historia empieza aquí.`,[['Poder',70+(i*7)%29],['Amenaza',62+(i*9)%36],['Maldad',48+(i*11)%45],['Presencia',72+(i*5)%25]],[`Poder: ${powers[i%powers.length]}`,`Debilidad: ${weaknesses[i%weaknesses.length]}`])});
+
+tools.excusas=(el)=>inputTool(el,'excusas','¿Para qué necesitas una excusa?','Ej.: llegar tarde al instituto...',v=>{const set=['Mi móvil decidió actualizarse justo cuando tenía que salir.','Me quedé mirando al techo y perdí completamente la noción del tiempo.','Un NPC me bloqueó el camino y no pude continuar.','Mi cerebro entró en modo ahorro de energía.','Estaba solucionando un problema que técnicamente todavía no existía.','Tuve una reunión urgente con mi yo del futuro.','La realidad hizo buffering durante unos minutos.','Me preparé tanto que olvidé hacer la cosa.'];const i=(v.length*7+v.charCodeAt(0))%set.length;return resultShell('excusas','💀','EXCUSA GENERADA','“'+set[i]+'”',[['Credibilidad',42+i*7],['Sospecha',Math.max(20,78-i*5)],['Creatividad',58+i*4]],['Usar con moderación','No admitir demasiado','Cara seria obligatoria'])});
+
+tools.superviviriasFallback=tools.supervivirias;
+tools.gta=(el)=>inputTool(el,'gta','Pon tu nombre','Tu nombre...',v=>{const n=safeName(v),i=n.length;const cars=['Elegy Retro','Comet S2','Sultan RS','Kuruma','Jester RR','Banshee 900R'];return resultShell('gta','🚗','TU VIDA EN GTA',`En Los Santos serías <b>${['un criminal de lujo','un conductor sospechosamente bueno','un magnate del caos','un especialista en meterte en problemas'][i%4]}</b>.`,[['Dinero',30+(i*13)%70],['Conducción',40+(i*9)%59],['Caos',35+(i*11)%64],['Suerte',25+(i*17)%74]],[`Coche: ${cars[i%cars.length]}`,`Wanted: ${i%6} estrellas`,`Propiedades: ${(i%9)+1}`])});
+
+tools.banda=(el)=>inputTool(el,'banda','Escribe una palabra, nombre o concepto','Ej.: oscuridad...',v=>{const n=safeName(v).toUpperCase(),i=n.length;const genres=['Metal alternativo','Nu metal','Punk rock','Post-hardcore','Rock oscuro','Industrial metal'];const names=['STATIC','NOCTURNA','VOID','RUPTURE','AFTERZERO','BLACKOUT'];return resultShell('banda','🎸',n||names[i%names.length],`Vuestra banda se prepara para tocar en un local demasiado pequeño para el ego del cantante.`,[['Actitud',75+(i*3)%25],['Oscuridad',68+(i*7)%32],['Potencial viral',42+(i*11)%58],['Caos del directo',60+(i*13)%39]],[`Género: ${genres[i%genres.length]}`,'Estética: luces agresivas + humo','Primer concierto: lleno dudoso'])});
+
+tools.roast=(el)=>inputTool(el,'roast','Pon un nombre','¿A quién vamos a destruir?',v=>{const n=safeName(v);const roasts=['Tienes una habilidad increíble para complicar cosas sencillas.','Si fueras una actualización, nadie pulsaría instalar.','Tu aura tiene WiFi pero no conexión a internet.','No eres el protagonista; eres el tutorial que nadie lee.','Hasta Google necesita contexto para entenderte.','Tu sentido común está en versión beta.','No tienes mala suerte; tienes una estrategia cuestionable.','Eres la prueba de que improvisar puede convertirse en estilo.','Tu plan A parece escrito por tu plan Z.','Tu mayor enemigo es el botón “mañana lo hago”.','Tienes tanto potencial que da miedo lo poco que lo utilizas.','No llegas tarde: llegas en contenido exclusivo.'];const i=(n.length*3+n.charCodeAt(0))%roasts.length;return resultShell('roast','🔥','ROAST DE '+n.toUpperCase(),roasts[i],[['Quemadura',65+(i%4)*8],['Precisión',58+(i%5)*8],['Daño emocional',70+(i%3)*9]],['No personalizar demasiado','Reírse primero','Discutible pero cierto'])});
+
+tools.grupo=(el)=>inputTool(el,'grupo','Escribe varios nombres separados por comas','Pablo, Sergio, Izan...',v=>{const names=v.split(',').map(s=>safeName(s.trim())).filter(Boolean);if(!names.length)names=['Tú'];const roles=['sobreviviría primero','se metería en problemas','sería famoso','traicionaría al grupo','olvidaría las llaves','se convertiría en líder','diría “yo tengo un plan” y empeoraría todo'];let total=names.join('').length;const a=names[total%names.length],b=roles[total%roles.length];return resultShell('grupo','👀',a+' ES QUIEN '+b.toUpperCase(),`El algoritmo ha analizado el caos del grupo y ha tomado una decisión completamente arbitraria.`,[['Caos del grupo',55+(total*7)%45],['Probabilidad de drama',45+(total*9)%54],['Trabajo en equipo',30+(total*5)%69]],[`${names.length} participantes`,`Veredicto dudoso`,`Repetible hasta que alguien se enfade`])});
+
+tools.anime=(el)=>inputTool(el,'anime','Pon tu nombre','Tu nombre...',v=>{const n=safeName(v),i=n.length,powers=['Eclipse Carmesí','Rayo del Vacío','Ojo del Caos','Llama Celestial','Dominio Astral','Corte Infinito'];const weapons=['Katana negra','Guadaña astral','Guantes de energía','Espada doble','Lanza celestial','Arco del vacío'];const ranks=['S','A+','SS','S+','EX'];return resultShell('anime','⚔️',n.toUpperCase()+', PORTADOR DEL '+powers[i%powers.length].toUpperCase(),`Tu arco empieza tranquilo y termina con una transformación que nadie vio venir.`,[['Poder',74+(i*7)%26],['Velocidad',52+(i*9)%48],['Aura',80+(i*5)%20],['Potencial final',65+(i*13)%35]],[`Rango: ${ranks[i%ranks.length]}`,`Arma: ${weapons[i%weapons.length]}`,'Enemigo final: tu versión corrupta'])});
+
+$('#suggestBtn').onclick=()=>document.getElementById('community').scrollIntoView({behavior:'smooth'});
+$('#contactBtn').onclick=()=>{document.getElementById('community').scrollIntoView({behavior:'smooth'});setTimeout(()=>document.querySelector('#community .two-col article:nth-child(2)').scrollIntoView({behavior:'smooth',block:'center'}),150)};
+$('#sendSuggestion').onclick=()=>{const text=document.getElementById('suggestionText').value.trim();if(!text){alert('Escribe una sugerencia antes de enviarla.');return}location.href='mailto:coldeatz@gmail.com?subject='+encodeURIComponent('VIRALBOX - Sugerencia')+'&body='+encodeURIComponent(text);};
+if(location.hash.slice(1)&&experiences.some(x=>x.id===location.hash.slice(1)))openExperience(location.hash.slice(1));
+</script>
+</body>
+</html>
